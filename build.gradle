@@ -1,0 +1,71 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.41'
+    ext {
+        configs = [kotlin_version   : kotlin_version,
+                   applicationId    : 'com.newolf.functioncode',
+                   compileSdkVersion: 27,
+//                   buildToolsVersion: '25.0.0',
+                   minSdkVersion    : 19,
+                   targetSdkVersion : 23,
+                   versionCode      : 103,
+                   versionName      : '1.0.3',
+
+                   buglyIdDebug     : '309020d535', //debug
+                   buglyIdRelease   : 'e6f4d08596',
+
+
+        ]
+
+        def supportLibraryVersion = '27.1.0'
+        def constraintLayoutVersion = '1.0.2'
+
+
+        deps = [supportCompat   : "com.android.support:support-compat:$supportLibraryVersion",
+                supportCoreUi   : "com.android.support:support-core-ui:$supportLibraryVersion",
+                supportFragment : "com.android.support:support-fragment:$supportLibraryVersion",
+                appcompatV7     : "com.android.support:appcompat-v7:$supportLibraryVersion",
+                design          : "com.android.support:design:$supportLibraryVersion",
+                gridlayoutV7    : "com.android.support:gridlayout-v7:$supportLibraryVersion",
+                supportV4       : "com.android.support:support-v4:$supportLibraryVersion",
+                vectorDrawable  : "com.android.support:support-vector-drawable:$supportLibraryVersion",
+                recyclerviewV7  : "com.android.support:recyclerview-v7:$supportLibraryVersion",
+                constraintLayout: "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
+                kotlin          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+        ]
+
+
+
+
+    }
+    repositories {
+        jcenter()
+        google()
+        maven { url 'https://jitpack.io' }
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0-alpha15'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

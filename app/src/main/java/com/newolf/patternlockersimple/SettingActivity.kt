@@ -7,9 +7,9 @@ import com.newolf.patternlocker.interfaces.OnPatternChangeListener
 import com.newolf.patternlocker.utils.PatternHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class SettingActivity : AppCompatActivity() {
 
-   lateinit var  patternHelper: PatternHelper
+    lateinit var patternHelper: PatternHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
-        patternLockerView.setOnPatternChangedListener(object :OnPatternChangeListener{
+        patternLockerView.setOnPatternChangedListener(object : OnPatternChangeListener {
             /**
              * 开始绘制图案时（即手指按下触碰到绘画区域时）会调用该方法
              *
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
              * @param view
              */
             override fun onClear(view: PatternLockerView?) {
-
+                finishIfNeeded()
             }
 
         })

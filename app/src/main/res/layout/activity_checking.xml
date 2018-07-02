@@ -18,7 +18,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:text="msg"
+        android:text="XXX,欢迎回来"
         android:gravity="center"
         android:id="@+id/tvShow"
         android:layout_height="60dp"/>

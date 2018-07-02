@@ -32,12 +32,16 @@ public class PatternHelper {
     private boolean isFinish;
     private boolean isOk;
     SecurityUtil securityUtil;
-    private Application mApplication;
+
+
+    private SharedPreferencesUtil mSp;
 
     private PatternHelper(Builder builder) {
         MAX_SIZE = builder.mSize;
         MAX_TIMES = builder.mRetrySize;
         GESTURE_PWD_KEY = builder.mSpName;
+
+        mSp = SharedPreferencesUtil.getInstance(builder.mSpName, builder.mApplication);
         securityUtil = SecurityUtil.getInstance(builder.mMasterPassword);
     }
 
@@ -140,11 +144,12 @@ public class PatternHelper {
     private void saveToStorage(String gesturePwd) {
         final String encryptPwd = securityUtil.encrypt(gesturePwd);
         Log.e("tmpPwd", "tmpPwd encryptPwd =" + encryptPwd);
-        SharedPreferencesUtil.getInstance(mApplication).saveString(GESTURE_PWD_KEY, encryptPwd);
+
+        mSp.saveString(GESTURE_PWD_KEY, encryptPwd);
     }
 
     private String getFromStorage() {
-        final String result = SharedPreferencesUtil.getInstance(mApplication).getString(GESTURE_PWD_KEY);
+        final String result = mSp.getString(GESTURE_PWD_KEY);
         return securityUtil.decrypt(result);
     }
 
@@ -153,7 +158,7 @@ public class PatternHelper {
     }
 
     public void clear() {
-        SharedPreferencesUtil.getInstance(mApplication).saveString(GESTURE_PWD_KEY, null);
+        mSp.saveString(GESTURE_PWD_KEY, null);
     }
 
 

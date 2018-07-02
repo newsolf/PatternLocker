@@ -1,8 +1,8 @@
 package com.newolf.patternlocker.utils;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 
 /**
@@ -17,16 +17,18 @@ import android.preference.PreferenceManager;
 
 public class SharedPreferencesUtil {
     private static SharedPreferencesUtil instance;
+    private static String mSpName;
 
     private SharedPreferences.Editor editor;
     private SharedPreferences prefer;
 
     public SharedPreferencesUtil(Application application) {
-        this.prefer = PreferenceManager.getDefaultSharedPreferences(application);
+        this.prefer = application.getSharedPreferences(mSpName,Context.MODE_PRIVATE);
         this.editor = this.prefer.edit();
     }
 
-    public static SharedPreferencesUtil getInstance(Application application) {
+    public static SharedPreferencesUtil getInstance(String spName, Application application) {
+        mSpName = spName;
         if (instance == null) {
             synchronized (SharedPreferencesUtil.class) {
                 if (instance == null) {
@@ -40,7 +42,7 @@ public class SharedPreferencesUtil {
 
     public void saveString(String name, String data) {
         this.editor.putString(name, data);
-        this.editor.commit();
+        this.editor.apply();
     }
 
     public String getString(String name) {

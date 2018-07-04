@@ -6,19 +6,17 @@ buildscript {
         configs = [kotlin_version   : kotlin_version,
                    applicationId    : 'com.newolf.functioncode',
                    compileSdkVersion: 27,
-//                   buildToolsVersion: '25.0.0',
-                   minSdkVersion    : 19,
+                   buildToolsVersion: '27.0.3',
+                   minSdkVersion    : 18,
                    targetSdkVersion : 23,
-                   versionCode      : 103,
-                   versionName      : '1.0.3',
+                   versionCode      : 150,
+                   versionName      : '1.5.0',
 
-                   buglyIdDebug     : '309020d535', //debug
-                   buglyIdRelease   : 'e6f4d08596',
 
 
         ]
 
-        def supportLibraryVersion = '27.1.0'
+        def supportLibraryVersion = '27.0.0'
         def constraintLayoutVersion = '1.0.2'
 
 
@@ -46,10 +44,7 @@ buildscript {
         google()
         maven { url 'https://jitpack.io' }
     }
-    repositories {
-        google()
-        jcenter()
-    }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0-alpha15'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -64,6 +59,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 }
 

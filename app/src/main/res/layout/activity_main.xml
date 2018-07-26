@@ -13,6 +13,10 @@
         android:id="@+id/patternIndicatorView"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        app:piv_fillColor="@android:color/darker_gray"
+        app:piv_color="@android:color/white"
+        app:piv_lineWidth="3dp"
+        app:piv_errorColor="@color/colorPrimary"
         android:layout_gravity="center_horizontal"/>
 
 

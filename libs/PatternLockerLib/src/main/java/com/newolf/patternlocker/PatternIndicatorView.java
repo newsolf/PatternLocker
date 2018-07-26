@@ -185,14 +185,27 @@ public class PatternIndicatorView extends View {
     }
 
     public void buildWithDefaultStyle() {
-        this.setNormalCellView(new DefaultIndicatorNormalCellView()
+
+        if (getNormalCellView()==null) {
+            setNormalCellView(new DefaultIndicatorNormalCellView());
+        }
+
+        if (getHitCellView()==null){
+            setHitCellView(new DefaultIndicatorHitCellView());
+        }
+
+        if (getLinkedLineView()==null){
+            setLinkedLineView(new DefaultIndicatorLinkedLineView());
+        }
+
+        this.setNormalCellView(getNormalCellView()
                 .setNormalColor(this.getNormalColor())
                 .setFillColor(this.getFillColor())
                 .setLineWidth(this.getLineWidth())
-        ).setHitCellView(new DefaultIndicatorHitCellView()
+        ).setHitCellView(getHitCellView()
                 .setErrorColor(this.getErrorColor())
                 .setHitColor(this.getHitColor())
-        ).setLinkedLineView(new DefaultIndicatorLinkedLineView()
+        ).setLinkedLineView(getLinkedLineView()
                 .setNormalColor(this.getHitColor())
                 .setErrorColor(this.getErrorColor())
                 .setLineWidth(this.getLineWidth())

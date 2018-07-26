@@ -3,6 +3,7 @@ package com.newolf.patternlockersimple
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.newolf.patternlocker.PatternLockerView
+import com.newolf.patternlocker.defaultIml.DefaultLockerNormalCellView
 import com.newolf.patternlocker.interfaces.OnPatternChangeListener
 import com.newolf.patternlocker.utils.PatternHelper
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,11 +23,18 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun initHelper() {
-        patternHelper = PatternHelper.Builder().setApplication(this.application).build()
+        patternHelper = PatternHelper.Builder()
+                .setApplication(this.application)
+
+                .build()
     }
 
     private fun initView() {
         tvShow.setText("设置解锁图案")
+        patternIndicatorView
+                .setNormalCellView(DefaultLockerNormalCellView())
+
+                .buildWithDefaultStyle()
     }
 
     private fun initListener() {
